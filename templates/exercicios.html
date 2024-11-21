@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Exercícios</title>
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block content %}
+    <div class="content-exercicios">
+        <div class="content-exercicios-wrapper">
+            <h2>Lista de Exercícios</h2>
+    <div class="btn-add-exercicio-container">
+        <a href="{{ url_for('adicionar_exercicio_route') }}" class="button-add-new-exercicio">Adicionar Novo Exercício</a></div>
+
+    <form action="{{ url_for('exercicios') }}" method="POST">
+        <label for="grupo_muscular">Filtrar por Grupo Muscular:</label>
+        <select name="grupo_muscular" id="grupo_muscular">
+            <option value="">--Selecione--</option>
+            {% for grupo in grupos_musculares %}
+            <option value="{{ grupo }}" {% if grupo == request.form.get('grupo_muscular') %}selected{% endif %}>{{ grupo }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="button">Buscar</button>
+    </form>
+
+    {% if exercicios %}
+    <ul class="lista-exercicio">
+        {% for ex in exercicios %}
+        <li>
+            <p><span class="nome-exercicio">{{ ex['nome'] }}</span> - {{ ex['grupo_muscular'] }} - {{ ex['repeticoes'] }} repetições - {{ ex['intervalos'] }} intervalos </p>
+            <div class="btn-exercico-wrapper">
+                <a href="{{ url_for('atualizar_exercicio_route', nome=ex['nome']) }}" class="button">Editar</a>
+            <form action="{{ url_for('remover_exercicio_route', nome=ex['nome']) }}" method="POST">
+                <button type="submit" class="button" onclick="return confirm('Tem certeza que deseja remover este exercício?');">Remover</button>
+            </div>
+            <hr>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Nenhum exercício encontrado para o grupo muscular selecionado.</p>
+        </div>
+    </div>
+    {% endif %}
+    {% endblock %}
+
+</body>
+</html>

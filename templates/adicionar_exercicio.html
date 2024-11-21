@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adicionar Exercício</title>
+  </head>
+  <body>
+    {% extends "base.html" %} {% block content %}
+    <div class="content-add-exercicio">
+      <h2>Adicionar Exercício</h2>
+      <form action="{{ url_for('adicionar_exercicio_route') }}" method="POST">
+        <label for="nome">Nome do Exercício:</label>
+        <input type="text" id="nome" name="nome" required />
+
+        <label for="grupo_muscular">Grupo Muscular:</label>
+        <select id="grupo_muscular" name="grupo_muscular" required>
+          <option value="">--Selecione--</option>
+          <option value="Peito">Peito</option>
+          <option value="Costas">Costas</option>
+          <option value="Pernas">Pernas</option>
+          <option value="Braços">Braços</option>
+          <option value="Ombros">Ombros</option>
+          <option value="Abdômen">Abdômen</option>
+        </select>
+
+        <label for="repeticoes">Repetições:</label>
+        <input
+          type="text"
+          id="repeticoes"
+          name="repeticoes"
+          min="1"
+          required
+          class="input-add-exercicio"
+        />
+        <label for="intervalo">Intervalo:</label>
+        <input type="text" id="intervalo" name="intervalos" min="1" required />
+        <button type="submit" class="button">Adicionar Exercício</button>
+      </form>
+    </div>
+    {% endblock %}
+  </body>
+</html>

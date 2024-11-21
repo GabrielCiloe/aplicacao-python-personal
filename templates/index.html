@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <title>Início - Personal Trainer App</title>
+  </head>
+  <body>
+    {% extends "base.html" %} {% block content %}
+    <div class="content-home">
+      <h2 class="hero-title">
+        Bem-vindo ao Sistema de Gestão de Personal Trainer
+      </h2>
+      <p class="subtitle-home">Utilize o menu acima para gerenciar:</p>
+      <ul class="lista-home">
+        <li>
+          <strong>Alunos:</strong> Cadastro, listagem e visualização de dados
+          dos alunos.
+        </li>
+        <li>
+          <strong>Exercícios:</strong> Adicionar, listar, buscar, atualizar e
+          remover exercícios.
+        </li>
+        <li>
+          <strong>Treinos:</strong> Criar treinos com exercícios, listar,
+          buscar, atualizar, remover e gerar relatórios específicos em PDF.
+        </li>
+      </ul>
+      <p class="footer-home-content">
+        Este sistema ajuda a organizar e otimizar o acompanhamento dos treinos e
+        evolução dos alunos de maneira eficiente.
+      </p>
+    </div>
+    {% endblock %}
+  </body>
+</html>

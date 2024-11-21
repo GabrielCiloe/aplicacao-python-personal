@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Treino</title>
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block content %}
+    <div class="content-att-treino">
+        <h2>Atualizar Treino</h2>
+    <form action="{{ url_for('atualizar_treino', nome=treino['nome']) }}" method="POST">
+        <label for="nome">Nome do Treino:</label>
+        <input type="text" id="nome" name="nome" value="{{ treino['nome'] }}" required />
+
+        <label for="aluno">Associar Aluno:</label>
+        <select id="aluno" name="aluno" required>
+            <option value="">--Selecione um Aluno--</option>
+            {% for aluno in alunos %}
+            <option value="{{ aluno['nome'] }}" {% if aluno['nome'] == treino['aluno_nome'] %}selected{% endif %}>{{ aluno['nome'] }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="grupo_muscular">Filtrar por Grupo Muscular:</label>
+        <select id="grupo_muscular" name="grupo_muscular">
+            <option value="">--Selecione um Grupo--</option>
+            {% for grupo in grupos_musculares %}
+            <option value="{{ grupo }}">{{ grupo }}</option>
+            {% endfor %}
+        </select>
+
+        <h3>Exercícios Disponíveis</h3>
+        <div id="exercicios-disponiveis" class="treino-inputs">
+            {% for exercicio in exercicios %}
+            {% set exercicio_selecionado = treino['exercicios'] | selectattr('nome', 'equalto', exercicio['nome']) | first %}
+            <div data-grupo="{{ exercicio['grupo_muscular'] }}">
+                <input type="checkbox" id="exercicio_{{ loop.index }}" name="exercicios" value="{{ exercicio['nome'] }}" {% if exercicio_selecionado %}checked{% endif %}>
+                <label for="exercicio_{{ loop.index }}">{{ exercicio['nome'] }} - {{ exercicio['grupo_muscular'] }}</label>
+                <input type="text" name="repeticoes" placeholder="Repetições" 
+                       value="{% if exercicio_selecionado %}{{ exercicio_selecionado['repeticoes'] }}{% endif %}" 
+                       required {{ 'disabled' if not exercicio_selecionado else '' }}>
+                <input type="text" name="intervalos" placeholder="Intervalos" 
+                       value="{% if exercicio_selecionado %}{{ exercicio_selecionado['intervalos'] }}{% endif %}" 
+                       required {{ 'disabled' if not exercicio_selecionado else '' }}>
+            </div>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="button">Atualizar Treino</button>
+    </form>
+    </div>
+
+    <script>
+        document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                let index = this.id.split('_')[1];
+                document.getElementsByName('repeticoes')[index - 1].disabled = !this.checked;
+                document.getElementsByName('intervalos')[index - 1].disabled = !this.checked;
+            });
+        });
+
+        document.getElementById('grupo_muscular').addEventListener('change', function() {
+            const grupoSelecionado = this.value;
+            const exercicios = document.querySelectorAll('#exercicios-disponiveis > div');
+
+            exercicios.forEach(exercicio => {
+                if (grupoSelecionado === "" || exercicio.getAttribute('data-grupo') === grupoSelecionado) {
+                    exercicio.style.display = 'block';
+                } else {
+                    exercicio.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    {% endblock %}
+</body>
+</html>

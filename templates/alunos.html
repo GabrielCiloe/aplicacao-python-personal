@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Alunos</title>
+  </head>
+  <body>
+    {% extends "base.html" %} {% block content %}
+    <div class="content-alunos">
+      <h2>Lista de Alunos</h2>
+      {% if alunos %}
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Sexo</th>
+            <th>Peso</th>
+            <th>Altura</th>
+            <th>IMC</th>
+            <th>Classificação</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for aluno in alunos %}
+          <tr>
+            <td>{{ aluno['nome'] }}</td>
+            <td>{{ aluno['idade'] }}</td>
+            <td>{{ aluno['sexo'] }}</td>
+            <td>{{ aluno['peso'] }} kg</td>
+            <td>{{ aluno['altura'] }} m</td>
+            <td>{{ aluno['imc'] }}</td>
+            <td>{{ aluno['classificacao'] }}</td>
+            <td>
+              <a
+                href="{{ url_for('editar_aluno', nome=aluno['nome']) }}"
+                class="button"
+                >Editar</a
+              >
+              <form
+                action="{{ url_for('remover_aluno_route', nome=aluno['nome']) }}"
+                method="POST"
+                style="display: inline"
+              >
+                <button
+                  type="submit"
+                  class="button"
+                  onclick="return confirm('Tem certeza que deseja remover este aluno?');"
+                >
+                  Remover
+                </button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>Nenhum aluno cadastrado.</p>
+      {% endif %}
+      <a href="{{ url_for('adicionar_aluno') }}" class="button"
+        >Adicionar Aluno</a
+      >
+    </div>
+    {% endblock %}
+  </body>
+</html>

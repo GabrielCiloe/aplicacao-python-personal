@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Aluno</title>
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block content %}
+    <div class="content-editar-aluno">
+        <h2>Editar Aluno</h2>
+    <form action="{{ url_for('editar_aluno', nome=aluno['nome']) }}" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" value="{{ aluno['nome'] }}" required />
+
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" name="idade" value="{{ aluno['idade'] }}" min="0" required />
+
+        <label for="peso">Peso (kg):</label>
+        <input type="number" id="peso" name="peso" value="{{ aluno['peso'] }}" step="0.1" min="0" required />
+
+        <label for="altura">Altura (m):</label>
+        <input type="number" id="altura" name="altura" value="{{ aluno['altura'] }}" step="0.01" min="0" required />
+
+        <label for="sexo">Sexo:</label>
+        <select id="sexo" name="sexo" required>
+            <option value="">--Selecione--</option>
+            <option value="Masculino" {% if aluno['sexo'] == 'Masculino' %}selected{% endif %}>Masculino</option>
+            <option value="Feminino" {% if aluno['sexo'] == 'Feminino' %}selected{% endif %}>Feminino</option>
+        </select>
+
+        <button type="submit" class="button">Atualizar Aluno</button>
+    </form>
+    </div>
+    {% endblock %}
+
+</body>
+</html>

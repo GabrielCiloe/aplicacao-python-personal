@@ -1,0 +1,500 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-family: "Roboto";
+  background-image: url("/static/img/academia-bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+body:before {
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 1;
+}
+
+.maxcontainer {
+  max-width: 70rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  margin: auto;
+}
+
+.hero-title {
+  color: #003366;
+  text-align: center;
+  font-size: 42px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.subtitle-home {
+  text-align: center;
+  color: #003366;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.lista-home {
+  color: #003366;
+  max-width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.content-home {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 50px;
+  border-radius: 12px;
+}
+
+.content-alunos {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 50px;
+  border-radius: 12px;
+}
+
+.content-adicionar-aluno {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 50px;
+  border-radius: 12px;
+}
+
+.form-adicionar-aluno {
+  max-width: 900px;
+  width: 100%;
+}
+
+.footer-home-content {
+  text-align: center;
+  color: #003366;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.input-adicionar-aluno {
+  width: 800px;
+}
+
+.grid-adicionar-aluno {
+  display: grid !important;
+  grid-template-column: repeat(3, 1fr) !important;
+  gap: 10px;
+}
+
+.content-exercicios {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 50px;
+  border-radius: 12px;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  max-height: 70vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+
+  & h2 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+
+.content-add-exercicio {
+  background-color: #fff;
+  display: grid !important;
+  grid-template-column: repeat(3, 1fr) !important;
+  gap: 10px;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 50px;
+  border-radius: 12px;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  max-height: 70vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+}
+
+.content-treinos {
+  background-color: #fff;
+  display: grid !important;
+  grid-template-column: repeat(3, 1fr) !important;
+  gap: 10px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 40px 50px;
+  border-radius: 12px;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  max-height: 70vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+
+  & h2 {
+    text-align: center;
+  }
+}
+
+.content-adicionar-treino {
+  background-color: #fff;
+  display: grid !important;
+  grid-template-column: repeat(3, 1fr) !important;
+  gap: 10px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 40px 50px;
+  border-radius: 12px;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  max-height: 70vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+
+  & h2 {
+    text-align: center;
+  }
+}
+
+.content-att-exercicio {
+  background-color: #fff;
+  display: grid !important;
+  grid-template-column: repeat(3, 1fr) !important;
+  gap: 10px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 40px 50px;
+  border-radius: 12px;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  max-height: 70vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+
+  & h2 {
+    text-align: center;
+  }
+}
+
+.content-att-treino {
+  background-color: #fff;
+  display: grid !important;
+  grid-template-column: repeat(3, 1fr) !important;
+  gap: 10px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 40px 50px;
+  border-radius: 12px;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  max-height: 70vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+
+  & h2 {
+    text-align: center;
+  }
+}
+
+.content-editar-aluno {
+  background-color: #fff;
+  display: grid !important;
+  grid-template-column: repeat(3, 1fr) !important;
+  gap: 10px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 40px 50px;
+  border-radius: 12px;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  max-height: 70vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+
+  & h2 {
+    text-align: center;
+  }
+}
+
+
+.treino-inputs > div {
+  margin-bottom: 10px;
+}
+.exercicios-disponiveis > div {
+  margin-bottom: 10px;
+}
+
+
+.lista-treinos {
+  list-style: none;
+
+  & li > strong {
+    display: block;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  & li {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  & ul {
+    list-style: none;
+  }
+}
+
+.busca-add-treino {
+  display: flex;
+
+  & div {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 80%;
+    gap: 10px;
+  }
+
+  & div > button,
+  a {
+    width: 100%;
+    display: inline-block;
+  }
+}
+
+.treinos-funcionalidades {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+
+  & a {
+    width: 100%;
+  }
+
+  & form > button {
+    width: 100%;
+  }
+}
+
+.input-add-exercicio {
+  width: 800px !important;
+}
+
+.btn-add-exercicio-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-add-new-exercicio {
+  display: inline-block;
+  background-color: #003366;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: fit-content;
+  margin: auto;
+}
+
+.lista-exercicio {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lista-exercicio > li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-exercico-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.nome-exercicio {
+  font-weight: 700;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 1em;
+  background-color: #003366;
+}
+
+header .menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 1em;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #f05025;
+}
+
+main {
+  min-height: calc(95vh - 68px);
+  padding: 2em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button,
+button[type="submit"],
+input[type="submit"] {
+  background-color: #003366;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: fit-content;
+  margin: auto;
+}
+
+.button:hover,
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+  background-color: #003340;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+  max-width: 500px;
+  margin: 1em 0;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="number"],
+form select {
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 800px;
+  width: 100% !important;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  background-color: white;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 0.75em;
+  text-align: left;
+}
+
+th {
+  background-color: #003366;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody > tr > td:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+}
+
+.teste {
+  font-size: 50px;
+  text-align: center;
+}
+
+footer {
+  background-color: #003366;
+  height: 50px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}

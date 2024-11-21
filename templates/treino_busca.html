@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resultado da Busca por Treino</title>
+  </head>
+  <body>
+    {% extends "base.html" %} {% block content %}
+    <h2>Resultado da Busca por Treino</h2>
+    {% if treino %}
+    <strong>{{ treino['nome'] }}</strong> - Aluno: {{ treino['aluno_nome'] }}
+    <ul>
+      {% for ex in treino['exercicios'] %}
+      <li>
+        Exercício: {{ ex['nome'] }}, Grupo Muscular: {{ ex['grupo_muscular'] }},
+        Repetições: {{ ex['repeticoes'] }}, Intervalos: {{ ex['intervalos'] }}
+      </li>
+      {% endfor %}
+    </ul>
+    <a
+      href="{{ url_for('atualizar_treino', nome=treino['nome']) }}"
+      class="button"
+      >Editar</a
+    >
+    <form
+      action="{{ url_for('remover_treino_route', nome=treino['nome']) }}"
+      method="POST"
+      style="display: inline"
+    >
+      <button
+        type="submit"
+        class="button"
+        onclick="return confirm('Tem certeza que deseja remover este treino?');"
+      >
+        Remover
+      </button>
+    </form>
+    <a
+      href="{{ url_for('gerar_relatorio_treino_route', nome=treino['nome']) }}"
+      class="button"
+      >Baixar Relatório</a
+    >
+    {% else %}
+    <p>Treino não encontrado.</p>
+    {% endif %} {% endblock %}
+  </body>
+</html>

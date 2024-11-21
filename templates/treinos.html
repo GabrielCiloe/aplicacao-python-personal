@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Treinos</title>
+  </head>
+  <body>
+    {% extends "base.html" %} {% block content %}
+    <div class="content-treinos">
+      <h2>Lista de Treinos</h2>
+      <div class="busca-add-treino">
+        <form action="{{ url_for('buscar_treino_route') }}" method="POST">
+            <input
+              type="text"
+              name="nome"
+              placeholder="Buscar treino pelo nome do aluno"
+              required
+            />
+            <div>
+                <button type="submit" class="button">Buscar</button>
+            <a href="{{ url_for('adicionar_treino') }}" class="button"
+            >Adicionar Treino</a
+          >
+            </div>
+          </form>
+          
+      </div>
+
+      {% if treinos %}
+      <ul class="lista-treinos">
+        {% for treino in treinos %}
+        <li>
+          <strong>{{ treino['nome'] }}</strong> <b>Aluno:</b> {{ treino['aluno_nome']
+          }}
+          <ul>
+            {% for ex in treino['exercicios'] %}
+            <li>
+              {{ ex['nome'] }} - Repetições: {{ ex['repeticoes'] }}, Intervalo:
+              {{ ex['intervalos'] }}
+            </li>
+            {% endfor %}
+          </ul>
+          <div class="treinos-funcionalidades">
+            <a
+            href="{{ url_for('atualizar_treino', nome=treino['nome']) }}"
+            class="button"
+            >Editar</a
+          >
+          <a
+            href="{{ url_for('gerar_relatorio_treino_route', nome=treino['nome']) }}"
+            class="button"
+            >Baixar Relatório</a
+          >
+          <form
+            action="{{ url_for('remover_treino_route', nome=treino['nome']) }}"
+            method="POST"
+          >
+            <button
+              type="submit"
+              class="button"
+              onclick="return confirm('Tem certeza que deseja remover este treino?');"
+            >
+              Remover
+            </button>
+            
+        </div>
+          </form>
+          
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>Nenhum treino cadastrado.</p>
+      {% endif %}
+      
+    </div>
+    {% endblock %}
+  </body>
+</html>

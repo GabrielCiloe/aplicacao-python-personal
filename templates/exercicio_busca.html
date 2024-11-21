@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resultado da Busca por Exercício</title>
+  </head>
+  <body>
+    {% extends "base.html" %} {% block content %}
+    <h2>Resultado da Busca por Exercício</h2>
+    {% if exercicio %}
+    <p><strong>Nome:</strong> {{ exercicio['nome'] }}</p>
+    <p><strong>Grupo Muscular:</strong> {{ exercicio['grupo_muscular'] }}</p>
+    <a
+      href="{{ url_for('atualizar_exercicio_route', nome=exercicio['nome']) }}"
+      class="button"
+      >Editar</a
+    >
+    <form
+      action="{{ url_for('remover_exercicio_route', nome=exercicio['nome']) }}"
+      method="POST"
+      style="display: inline"
+    >
+      <button
+        type="submit"
+        class="button"
+        onclick="return confirm('Tem certeza que deseja remover este exercício?');"
+      >
+        Remover
+      </button>
+    </form>
+    {% else %}
+    <p>Exercício não encontrado.</p>
+    {% endif %} {% endblock %}
+  </body>
+</html>

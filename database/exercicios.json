@@ -1,0 +1,26 @@
+[
+    {
+        "nome": "Agachamento",
+        "grupo_muscular": "Pernas",
+        "repeticoes": "3x20",
+        "intervalos": "50s"
+    },
+    {
+        "nome": "Supino reto",
+        "grupo_muscular": "Peito",
+        "repeticoes": "3x10",
+        "intervalos": "50s"
+    },
+    {
+        "nome": "prancha",
+        "grupo_muscular": "Abdômen",
+        "repeticoes": "4x15",
+        "intervalos": "50s"
+    },
+    {
+        "nome": "Elevação Lateral",
+        "grupo_muscular": "Ombros",
+        "repeticoes": "15",
+        "intervalos": "30"
+    }
+]
