@@ -1,0 +1,14 @@
+[
+    {
+        "nome": "Inferiores ",
+        "exercicios": [
+            {
+                "nome": "Agachamento",
+                "grupo_muscular": "Pernas",
+                "repeticoes": "3x15",
+                "intervalos": "60s"
+            }
+        ],
+        "aluno_nome": "Kevilly"
+    }
+]

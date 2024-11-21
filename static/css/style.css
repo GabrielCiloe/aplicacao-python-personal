@@ -14,6 +14,7 @@ body {
   position: relative;
 }
 
+
 body:before {
   background-size: cover;
   position: absolute;
@@ -168,6 +169,38 @@ body:before {
   & h2 {
     text-align: center;
   }
+}
+
+
+
+.treino-busca-container {
+  background-color: #fff;
+  display: grid !important;
+  grid-template-column: repeat(3, 1fr) !important;
+  gap: 10px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 40px 50px;
+  border-radius: 12px;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  max-height: 70vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+
+  & h2 {
+    text-align: center;
+  }
+}
+
+.treino-busca-btn-container{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items:center;
+  margin: auto
 }
 
 .content-adicionar-treino {

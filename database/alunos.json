@@ -8,5 +8,15 @@
         "imc": 23.94,
         "classificacao": "Peso normal",
         "treino": null
+    },
+    {
+        "nome": "Lucas",
+        "idade": 21,
+        "sexo": "Masculino",
+        "peso": 60.0,
+        "altura": 1.72,
+        "imc": 20.28,
+        "classificacao": "Peso normal",
+        "treino": null
     }
 ]

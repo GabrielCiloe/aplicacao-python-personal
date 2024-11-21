@@ -7,42 +7,47 @@
   </head>
   <body>
     {% extends "base.html" %} {% block content %}
-    <h2>Resultado da Busca por Treino</h2>
-    {% if treino %}
-    <strong>{{ treino['nome'] }}</strong> - Aluno: {{ treino['aluno_nome'] }}
-    <ul>
-      {% for ex in treino['exercicios'] %}
-      <li>
-        Exercício: {{ ex['nome'] }}, Grupo Muscular: {{ ex['grupo_muscular'] }},
-        Repetições: {{ ex['repeticoes'] }}, Intervalos: {{ ex['intervalos'] }}
-      </li>
-      {% endfor %}
-    </ul>
-    <a
-      href="{{ url_for('atualizar_treino', nome=treino['nome']) }}"
-      class="button"
-      >Editar</a
-    >
-    <form
-      action="{{ url_for('remover_treino_route', nome=treino['nome']) }}"
-      method="POST"
-      style="display: inline"
-    >
-      <button
-        type="submit"
+    <div class="treino-busca-container">
+      <h2>Resultado da Busca por Treino</h2>
+      {% if treino %}
+      <strong>{{ treino['nome'] }}</strong> - Aluno: {{ treino['aluno_nome'] }}
+      <ul>
+        {% for ex in treino['exercicios'] %}
+        <li>
+          Exercício: {{ ex['nome'] }}, Grupo Muscular: {{ ex['grupo_muscular']
+          }}, Repetições: {{ ex['repeticoes'] }}, Intervalos: {{
+          ex['intervalos'] }}
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="treino-busca-btn-container">
+        <a
+          href="{{ url_for('atualizar_treino', nome=treino['nome']) }}"
+          class="button"
+          >Editar</a
+        >
+        <form
+          action="{{ url_for('remover_treino_route', nome=treino['nome']) }}"
+          method="POST"
+          style="display: inline"
+        >
+          <button
+            type="submit"
+            class="button"
+            onclick="return confirm('Tem certeza que deseja remover este treino?');"
+          >
+            Remover
+          </button>
+        </form>
+      </div>
+      <a
+        href="{{ url_for('gerar_relatorio_treino_route', nome=treino['nome']) }}"
         class="button"
-        onclick="return confirm('Tem certeza que deseja remover este treino?');"
+        >Baixar Relatório</a
       >
-        Remover
-      </button>
-    </form>
-    <a
-      href="{{ url_for('gerar_relatorio_treino_route', nome=treino['nome']) }}"
-      class="button"
-      >Baixar Relatório</a
-    >
-    {% else %}
-    <p>Treino não encontrado.</p>
-    {% endif %} {% endblock %}
+      {% else %}
+      <p>Treino não encontrado.</p>
+      {% endif %} {% endblock %}
+    </div>
   </body>
 </html>
